@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b16">
+<title>THE INTERNET'S LOST FILE</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--bg:#070b16;--panel:#0d1425;--panel2:#111c31;--line:#24334d;--cyan:#54e7f2;--blue:#658cff;--lime:#b9f36b;--pink:#f47cc8;--text:#e9f2ff;--muted:#8b9ab4;--danger:#ff7185;--mono:'DM Mono',monospace;--sans:'Space Grotesk',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#172b4c 0%,#070b16 55%);color:var(--text);font-family:var(--sans);min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}.noise{position:fixed;inset:0;pointer-events:none;opacity:.08;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(to bottom,black,transparent 90%)}.wrap{width:min(1100px,92%);margin:auto;position:relative}.topline{font:11px var(--mono);letter-spacing:2px;color:var(--cyan);display:flex;justify-content:space-between;gap:12px;padding:24px 0}.screen{display:none;min-height:calc(100vh - 70px);padding:30px 0 60px}.screen.active{display:block;animation:appear .45s ease}@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}.hero{min-height:75vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;max-width:850px}.eyebrow{font:12px var(--mono);letter-spacing:3px;color:var(--lime);text-transform:uppercase}.hero h1{font-size:clamp(46px,9vw,104px);line-height:.91;letter-spacing:-5px;margin:24px 0 22px;text-transform:uppercase;position:relative}.hero h1 span{color:var(--cyan);text-shadow:0 0 28px #54e7f255}.glitch{animation:flicker 5s infinite}@keyframes flicker{0%,94%,96%,100%{text-shadow:3px 0 #f47cc8,-3px 0 #54e7f2}95%{text-shadow:-5px 0 #f47cc8,5px 0 #54e7f2}}.intro{color:#a9b8d0;line-height:1.8;font-size:17px;max-width:620px}.btn{border:1px solid var(--cyan);background:var(--cyan);color:#06111c;padding:14px 22px;font-weight:700;letter-spacing:1px;border-radius:5px;transition:.2s;box-shadow:0 0 24px #54e7f222}.btn:hover{transform:translateY(-2px);box-shadow:0 0 30px #54e7f255}.btn.secondary{background:transparent;color:var(--cyan)}.btn.ghost{background:transparent;color:var(--muted);border-color:var(--line);box-shadow:none}.btn.small{padding:9px 13px;font-size:12px}.hero .btn{margin-top:28px}.statusline{font:11px var(--mono);color:var(--muted);margin-top:45px}.statusline b{color:var(--lime);font-weight:400}.panel{background:linear-gradient(145deg,#111b30ee,#0b1220ee);border:1px solid var(--line);border-radius:10px;padding:clamp(20px,4vw,34px);box-shadow:0 20px 70px #0005}.narrow{max-width:570px;margin:4vh auto}.sectiontag{font:11px var(--mono);letter-spacing:2px;color:var(--cyan);margin-bottom:12px}.panel h2{font-size:clamp(27px,5vw,42px);margin:0 0 10px}.muted{color:var(--muted);line-height:1.7}.field{margin:20px 0}.field label{display:block;font:11px var(--mono);letter-spacing:1px;color:#a8bad5;margin-bottom:8px}.field input,.field textarea,.answer-input{width:100%;background:#080f1d;border:1px solid #2b3c59;color:var(--text);border-radius:5px;padding:14px;outline:none}.field input:focus,.field textarea:focus,.answer-input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #54e7f218}.field textarea{min-height:80px;resize:vertical}.note{font-size:12px;color:var(--muted);line-height:1.6}.error{color:var(--danger);font-size:13px;min-height:20px;margin-top:10px}.dashboard-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin:10px 0 25px}.dashboard-head h2{font-size:clamp(26px,5vw,40px);margin:5px 0}.teamline{font:12px var(--mono);color:var(--muted)}.teamline strong{color:var(--lime)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.stat{background:#0b1424;border:1px solid var(--line);padding:15px;border-radius:7px}.stat small{display:block;color:var(--muted);font:10px var(--mono);letter-spacing:1px}.stat strong{font-size:25px;display:block;margin-top:7px}.progressbar{height:7px;background:#1b2940;border-radius:20px;overflow:hidden;margin:12px 0 28px}.progressbar span{height:100%;display:block;background:linear-gradient(90deg,var(--cyan),var(--lime));width:0%;transition:width .4s}.folders{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.folder{position:relative;text-align:left;background:#0d1729;border:1px solid var(--line);border-radius:8px;padding:20px;min-height:175px;color:var(--text);transition:.2s}.folder:hover:not(:disabled){transform:translateY(-4px);border-color:var(--cyan);box-shadow:0 10px 30px #0005}.folder:disabled{opacity:.42;cursor:not-allowed}.folder .ico{font-size:29px;display:block;margin-bottom:17px}.folder strong{font-size:14px;letter-spacing:.5px;display:block}.folder p{font-size:12px;line-height:1.5;color:var(--muted);margin:8px 0 0}.folder .state{position:absolute;top:13px;right:13px;font:9px var(--mono);color:var(--lime);letter-spacing:1px}.folder.done{border-color:#9acb5a88;background:linear-gradient(140deg,#17271f,#0d1729)}.folder.final{border-color:#8a70d966}.mission-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}.mission-title{font-size:clamp(26px,5vw,40px);margin:5px 0}.challenge{max-width:760px;margin:0 auto}.puzzle{background:#080f1d;border:1px solid #263854;padding:22px;border-radius:8px;margin:18px 0}.puzzle h3{margin:0 0 10px}.question{font-size:17px;line-height:1.7}.feedback{min-height:24px;font-size:13px;margin-top:10px}.feedback.good{color:var(--lime)}.feedback.bad{color:var(--danger)}.hintbox{display:none;border-left:2px solid var(--pink);padding:10px 13px;color:#d7b4d1;background:#24172a;margin:12px 0;font-size:13px}.hintbox.show{display:block}.row{display:flex;gap:10px;flex-wrap:wrap}.row .answer-input{flex:1;min-width:180px}.chat{display:flex;flex-direction:column;gap:12px;margin:18px 0}.bubble{max-width:85%;padding:14px 16px;border-radius:10px;background:#17243a;border:1px solid #30435f;line-height:1.6;font-size:14px}.bubble.you{align-self:flex-end;background:#12313b;border-color:#28616a}.sender{font:10px var(--mono);color:var(--cyan);display:block;margin-bottom:5px}.memory-display{font-size:clamp(24px,5vw,40px);letter-spacing:8px;text-align:center;padding:35px 10px;background:#050a13;border:1px dashed #425777;border-radius:8px;line-height:1.8}.timer-big{font:30px var(--mono);color:var(--lime);text-align:center;margin:12px}.fragment{display:inline-block;padding:8px 12px;margin:5px;border:1px solid #577348;color:var(--lime);background:#17251b;border-radius:4px;font:12px var(--mono)}.victory{text-align:center;padding:8vh 0}.victory h1{font-size:clamp(38px,8vw,78px);line-height:1;margin:20px 0;color:var(--lime);text-shadow:0 0 35px #b9f36b55}.recovered{font:12px var(--mono);color:var(--cyan);letter-spacing:3px}.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}.confetti i{position:absolute;top:-20px;width:8px;height:13px;background:var(--cyan);animation:fall 3.5s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}footer{border-top:1px solid #1d2a40;padding:20px 0;color:#64738b;font:10px var(--mono);letter-spacing:1px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.hidden{display:none!important}
+@media(max-width:700px){.folders{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr 1fr}.hero h1{letter-spacing:-3px}.topline{font-size:9px}.folder{padding:15px;min-height:165px}}@media(max-width:420px){.folders{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.folder{min-height:135px}.hero h1{font-size:46px}}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="wrap">
+  <div class="topline"><span>ROTARACT // DIGITAL RECOVERY UNIT</span><span id="systemClock">SYS.TIME --:--:--</span></div>
+
+  <section id="landing" class="screen active">
+    <div class="hero">
+      <div class="eyebrow">⚠ classified transmission // case #404</div>
+      <h1 class="glitch">THE<br>INTERNET'S<br><span>LOST FILE</span></h1>
+      <p class="intro">Something has vanished from the internet. Five digital folders remain. The fragments are scattered, the system is unstable, and the clock is already running. Gather your team. Decode the clues. Recover what was lost.</p>
+      <button class="btn" onclick="showScreen('register')">ENTER THE SYSTEM ↗</button>
+      <div class="statusline">SYSTEM STATUS: <b>UNSTABLE</b> &nbsp; // &nbsp; RECOVERY WINDOW: OPEN</div>
+    </div>
+  </section>
+
+  <section id="register" class="screen">
+    <div class="panel narrow">
+      <div class="sectiontag">01 / IDENTIFICATION PROTOCOL</div>
+      <h2>Who's entering?</h2>
+      <p class="muted">Register your crew before accessing the recovered data. You need 3–5 members and the access code supplied by the organisers.</p>
+      <form id="registerForm">
+        <div class="field"><label for="teamName">TEAM NAME</label><input id="teamName" maxlength="32" required placeholder="e.g. CTRL ALT ELITE"></div>
+        <div class="field"><label for="members">MEMBER NAMES (SEPARATE WITH COMMAS)</label><textarea id="members" required placeholder="Aarav, Meera, Zoya"></textarea><div class="note">Enter between 3 and 5 names.</div></div>
+        <div class="field"><label for="accessCode">TEAM ACCESS CODE</label><input id="accessCode" required placeholder="••••••••" autocomplete="off"></div>
+        <div class="error" id="registerError"></div>
+        <div class="row"><button class="btn" type="submit">INITIALISE TEAM →</button><button class="btn ghost" type="button" onclick="showScreen('landing')">BACK</button></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="dashboard" class="screen">
+    <div class="dashboard-head">
+      <div><div class="sectiontag">02 / RECOVERY DESKTOP</div><h2>Welcome, <span id="dashTeam">TEAM</span>.</h2><div class="teamline">OPERATIVE STATUS: <strong>CONNECTED</strong> &nbsp; // &nbsp; <span id="dashMembers"></span></div></div>
+      <button class="btn ghost small" onclick="organiserReset()">↻ RESET TEST</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><small>POINTS EARNED</small><strong id="points">000</strong></div>
+      <div class="stat"><small>FOLDERS RESTORED</small><strong id="completed">0 / 5</strong></div>
+      <div class="stat"><small>TIME ELAPSED</small><strong id="elapsed">00:00</strong></div>
+    </div>
+    <div class="teamline">RECOVERY PROGRESS <span id="progressText">0%</span></div><div class="progressbar"><span id="progressFill"></span></div>
+    <div class="folders" id="folderGrid"></div>
+    <p class="note" style="margin-top:18px">MISSIONS UNLOCK IN SEQUENCE. Complete a folder to reveal its fragment and unlock the next directory.</p>
+  </section>
+
+  <section id="mission" class="screen">
+    <div class="mission-top"><button class="btn ghost small" onclick="showScreen('dashboard')">← DASHBOARD</button><span class="teamline" id="missionIndex">DIRECTORY 01 / 05</span></div>
+    <div class="panel challenge">
+      <div class="sectiontag" id="missionTag">DIRECTORY ACCESS</div>
+      <h2 class="mission-title" id="missionTitle">CORRUPTED DATA</h2>
+      <p class="muted" id="missionIntro"></p>
+      <div id="missionBody"></div>
+      <div class="row" style="margin-top:22px"><button class="btn ghost small" onclick="showScreen('dashboard')">SAVE & EXIT TO DESKTOP</button></div>
+    </div>
+  </section>
+
+  <section id="victory" class="screen">
+    <div class="panel victory">
+      <div class="recovered">▰▰▰ SYSTEM RESTORED ▰▰▰</div>
+      <h1>FILE<br>SUCCESSFULLY<br>RECOVERED.</h1>
+      <p class="muted">The fragments are reunited. The lost file is back online. Your team has completed the recovery operation.</p>
+      <div style="margin:25px 0"><span class="fragment" id="finalTeam"></span><span class="fragment" id="finalScore"></span><span class="fragment" id="finalTime"></span></div>
+      <p class="note">MISSION COMPLETE // THANK YOU, OPERATIVES.</p>
+      <button class="btn" onclick="showScreen('dashboard')">RETURN TO DESKTOP</button>
+    </div>
+  </section>
+
+  <footer><span>THE INTERNET'S LOST FILE // ROTARACT</span><span>LOCAL SYSTEM BUILD v1.0</span></footer>
+</div>
+<div class="confetti" id="confetti"></div>
+
+<script>
+/* =========================================================
+   ORGANISER CUSTOMISATION — EDIT THESE VALUES BEFORE EVENT
+   ========================================================= */
+const CONFIG = {
+  eventName: "THE INTERNET'S LOST FILE",
+  accessCode: "LOST2026",              // Change the team registration code here
+  qrSecretWord: "NEONPHOENIX",          // Put this secret word behind your venue QR code
+  finalPassword: "RESTORETHELOSTINTERNETFILE", // Teams combine fragments to form this
+  folders: [
+    {name:"CORRUPTED DATA",icon:"▧",desc:"Repair scrambled data and decode corrupted transmissions.",fragment:"RESTORE"},
+    {name:"THE HIDDEN FILE",icon:"⌕",desc:"Find the single venue QR code and recover its secret word.",fragment:"THE"},
+    {name:"MEMORY CORRUPTED",icon:"▦",desc:"A memory dump is about to self-destruct. Remember what you see.",fragment:"LOST"},
+    {name:"THE UNKNOWN USER",icon:"◉",desc:"Someone is messaging from an unknown location. Decode their clues.",fragment:"INTERNET"},
+    {name:"THE FINAL FILE",icon:"⬡",desc:"Combine every recovered fragment and restore the missing file.",fragment:"FILE"}
+  ],
+  pointsPerFolder: [100,100,100,100,200],
+  hintPenalty: 10,
+  memorySeconds: 12
+};
+
+/* Puzzle answers and hints are intentionally editable here. */
+const DATA_PUZZLES = [
+  {q:"Unscramble this corrupted word: <b>R E T N I N E T</b>",a:"INTERNET",hint:"It's the global network connecting us all."},
+  {q:"Decode this Caesar cipher (each letter shifted +1): <b>G J M F</b>",a:"FILE",hint:"Move every letter one step backwards in the alphabet."},
+  {q:"Emoji code: 🔑 + 🧩 + 📁 = What are you trying to do?",a:"UNLOCK FILE",alt:["UNLOCK THE FILE","UNLOCK"],hint:"The key opens something that contains data."}
+];
+const MEMORY_ITEMS = ["🛰️","🍋","🎧","🦋","🔐","🌙","🧩","🚀"];
+const MEMORY_QUESTIONS = [
+  {q:"Which fruit appeared in the memory dump?",a:"LEMON",hint:"It was yellow."},
+  {q:"Which object was associated with listening to audio?",a:"HEADPHONES",alt:["HEADPHONE"],hint:"You wear it over your ears."},
+  {q:"Which symbol appeared immediately before the rocket?",a:"PUZZLE",alt:["PUZZLE PIECE"],hint:"It represents a challenge."}
+];
+const CHAT_PUZZLES = [
+  {message:"I have keys but no locks. I have space but no room. You can enter, but you cannot go outside. What am I?",a:"KEYBOARD",hint:"You probably use one to type your answers."},
+  {message:"The more you take, the more you leave behind. What are they?",a:"FOOTSTEPS",hint:"Think about walking."},
+  {message:"I speak without a mouth and hear without ears. I have nobody, but I come alive with wind. What am I?",a:"ECHO",hint:"A sound that comes back to you."}
+];
+
+const STORAGE_KEY = "internetLostFile_v1";
+let game = null, activeFolder = 0, memoryAnswers = 0, memoryTimer = null, memoryInterval = null, startedAt = null, clockInterval = null;
+
+function showScreen(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  if(id==="dashboard") renderDashboard();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function normalise(v){return String(v||"").trim().toUpperCase().replace(/[^A-Z0-9 ]/g,"").replace(/\s+/g," ");}
+function save(){if(game){localStorage.setItem(STORAGE_KEY,JSON.stringify(game));}}
+function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY));}catch(e){return null;}}
+function initClock(){
+  const el=document.getElementById("systemClock");
+  setInterval(()=>{el.textContent="SYS.TIME "+new Date().toLocaleTimeString("en-GB");},1000);
+}
+function elapsedSeconds(){return game?Math.max(0,Math.floor((Date.now()-game.startedAt)/1000)):0;}
+function timeString(sec){return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0");}
+function startTimer(){
+  if(clockInterval)clearInterval(clockInterval);
+  clockInterval=setInterval(()=>{if(game&&!game.won){const el=document.getElementById("elapsed");if(el)el.textContent=timeString(elapsedSeconds());}},1000);
+}
+document.getElementById("registerForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const name=document.getElementById("teamName").value.trim();
+  const members=document.getElementById("members").value.split(",").map(x=>x.trim()).filter(Boolean);
+  const code=document.getElementById("accessCode").value.trim();
+  const err=document.getElementById("registerError");
+  if(members.length<3||members.length>5){err.textContent="Your team must have between 3 and 5 members.";return;}
+  if(code.toUpperCase()!==CONFIG.accessCode.toUpperCase()){err.textContent="ACCESS DENIED. Check the code supplied by your organiser.";return;}
+  if(!name){err.textContent="Enter a team name to continue.";return;}
+  game={team:name,members,points:0,completed:[],hints:[],startedAt:Date.now(),won:false};
+  save();startTimer();showScreen("dashboard");
+});
+function renderDashboard(){
+  if(!game)return;
+  document.getElementById("dashTeam").textContent=game.team;
+  document.getElementById("dashMembers").textContent=game.members.join(" · ");
+  document.getElementById("points").textContent=String(game.points).padStart(3,"0");
+  document.getElementById("completed").textContent=game.completed.length+" / 5";
+  document.getElementById("elapsed").textContent=timeString(elapsedSeconds());
+  const pct=game.completed.length*20;
+  document.getElementById("progressText").textContent=pct+"%";
+  document.getElementById("progressFill").style.width=pct+"%";
+  const grid=document.getElementById("folderGrid");grid.innerHTML="";
+  CONFIG.folders.forEach((f,i)=>{
+    const done=game.completed.includes(i),unlocked=i===0||game.completed.includes(i-1);
+    const b=document.createElement("button");
+    b.className="folder"+(done?" done":"")+(i===4?" final":"");
+    b.disabled=!unlocked||done;
+    b.innerHTML=`<span class="state">${done?"✓ RESTORED":unlocked?"UNLOCKED":"LOCKED"}</span><span class="ico">${f.icon}</span><strong>${String(i+1).padStart(2,"0")} / ${f.name}</strong><p>${f.desc}</p>`;
+    b.addEventListener("click",()=>openMission(i));grid.appendChild(b);
+  });
+  if(game.won)document.getElementById("dashTeam").textContent=game.team+" ✓";
+}
+function openMission(i){
+  if(!game)return;
+  if(i>0&&!game.completed.includes(i-1)){return;}
+  if(game.completed.includes(i))return;
+  activeFolder=i;
+  document.getElementById("missionIndex").textContent=`DIRECTORY ${String(i+1).padStart(2,"0")} / 05`;
+  document.getElementById("missionTitle").textContent=CONFIG.folders[i].name;
+  document.getElementById("missionTag").textContent="SECURE DIRECTORY // ACCESS GRANTED";
+  const intros=[
+    "The data has been scrambled. Solve all three corrupted entries to reconstruct the first fragment.",
+    "A physical trace has been detected at the event venue. Locate the one official QR code, scan it, and enter the secret word it reveals.",
+    "A memory dump will appear for a few seconds. Memorise the symbols, then answer all three recovery questions.",
+    "An unknown user has connected to the terminal. Read each message carefully and answer their riddles.",
+    "All previous fragments have been recovered. Combine them in order to rebuild the final password."
+  ];
+  document.getElementById("missionIntro").textContent=intros[i];
+  const body=document.getElementById("missionBody");body.innerHTML="";
+  if(i===0)renderDataMission(body);
+  if(i===1)renderQRMission(body);
+  if(i===2)renderMemoryMission(body);
+  if(i===3)renderChatMission(body);
+  if(i===4)renderFinalMission(body);
+  showScreen("mission");
+}
+function addHint(container,key,hint){
+  const btn=document.createElement("button");btn.className="btn ghost small";btn.textContent="▸ REVEAL HINT (-"+CONFIG.hintPenalty+" PTS)";
+  const box=document.createElement("div");box.className="hintbox";box.textContent=hint;
+  btn.onclick=()=>{if(!game.hints.includes(key)){game.hints.push(key);game.points-=CONFIG.hintPenalty;save();}box.classList.add("show");btn.disabled=true;btn.textContent="HINT USED";};
+  container.append(btn,box);
+}
+function answerRow(parent,placeholder,callback){
+  const row=document.createElement("div");row.className="row";
+  const input=document.createElement("input");input.className="answer-input";input.placeholder=placeholder;input.autocomplete="off";
+  const btn=document.createElement("button");btn.className="btn small";btn.textContent="SUBMIT";
+  const feedback=document.createElement("div");feedback.className="feedback";
+  btn.onclick=()=>callback(input.value,feedback,input,btn);
+  input.addEventListener("keydown",e=>{if(e.key==="Enter")btn.click();});
+  row.append(input,btn);parent.append(row,feedback);return {input,btn,feedback};
+}
+function correctFeedback(f){f.className="feedback good";f.textContent="✓ Correct. Data fragment verified.";}
+function wrongFeedback(f){f.className="feedback bad";f.textContent="✕ Incorrect. Try again, operative.";}
+function completeFolder(i){
+  if(game.completed.includes(i))return;
+  game.completed.push(i);game.points+=CONFIG.pointsPerFolder[i];save();
+  const body=document.getElementById("missionBody");body.innerHTML=`<div class="puzzle"><div class="sectiontag">FRAGMENT RECOVERED</div><h3>Directory restored ✓</h3><p class="muted">You recovered a fragment. Keep it safe — you will need every piece.</p><span class="fragment">${CONFIG.folders[i].fragment}</span><p class="note">+${CONFIG.pointsPerFolder[i]} POINTS</p><button class="btn" onclick="${i===4?"finishGame()":"showScreen('dashboard')"}">${i===4?"RESTORE THE FILE":"RETURN TO DESKTOP →"}</button></div>`;
+}
+function renderDataMission(body){
+  let solved=new Set();
+  DATA_PUZZLES.forEach((p,i)=>{
+    const card=document.createElement("div");card.className="puzzle";
+    card.innerHTML=`<div class="sectiontag">CORRUPTED ENTRY 0${i+1}</div><div class="question">${p.q}</div>`;
+    const key="data"+i;
+    const a=answerRow(card,"Enter decoded answer…",(v,f,input,btn)=>{
+      const accepted=[p.a,...(p.alt||[])].map(normalise);
+      if(accepted.includes(normalise(v))){if(!solved.has(i)){solved.add(i);correctFeedback(f);input.disabled=true;btn.disabled=true;btn.textContent="VERIFIED";if(solved.size===DATA_PUZZLES.length)completeFolder(0);}}
+      else wrongFeedback(f);
+    });
+    addHint(card,key,p.hint);body.appendChild(card);
+  });
+}
+function renderQRMission(body){
+  const card=document.createElement("div");card.className="puzzle";
+  card.innerHTML=`<div class="sectiontag">ONE PHYSICAL TRACE DETECTED</div><h3>Find the signal.</h3><p class="question">A single QR code has been placed somewhere at the event venue. Find the official <b>INTERNET'S LOST FILE</b> QR poster and scan it with your phone. The page it opens will reveal a secret word. No other outdoor checkpoints are required.</p><p class="note">ORGANISER: Create a QR code that opens a page or displays the secret word configured in this website.</p>`;
+  const a=answerRow(card,"Enter the secret word from the QR…",(v,f,input,btn)=>{
+    if(normalise(v)===normalise(CONFIG.qrSecretWord)){correctFeedback(f);input.disabled=true;btn.disabled=true;completeFolder(1);}else wrongFeedback(f);
+  });
+  addHint(card,"qr","Look for the event's official QR poster. The secret word is displayed after scanning it.");body.appendChild(card);
+}
+function renderMemoryMission(body){
+  const card=document.createElement("div");card.className="puzzle";
+  card.innerHTML=`<div class="sectiontag">VOLATILE MEMORY // ${CONFIG.memorySeconds} SECONDS</div><p class="muted">Memorise the eight symbols. They will disappear when the timer reaches zero.</p><div id="memoryDisplay" class="memory-display">${MEMORY_ITEMS.join(" ")}</div><div class="timer-big" id="memoryCountdown">${CONFIG.memorySeconds}</div><button class="btn secondary small" id="startMemory">START MEMORY SCAN</button><div id="memoryQuestions" class="hidden"></div>`;
+  body.appendChild(card);
+  const start=card.querySelector("#startMemory");
+  start.onclick=()=>{
+    start.disabled=true;let remaining=CONFIG.memorySeconds;const display=card.querySelector("#memoryDisplay"),count=card.querySelector("#memoryCountdown");
+    count.textContent=remaining;
+    memoryInterval=setInterval(()=>{remaining--;count.textContent=remaining;if(remaining<=0){clearInterval(memoryInterval);display.textContent="MEMORY PURGED";display.style.color="var(--danger)";count.textContent="00";renderMemoryQuestions(card.querySelector("#memoryQuestions"));}},1000);
+  };
+}
+function renderMemoryQuestions(container){
+  container.classList.remove("hidden");let solved=new Set();
+  MEMORY_QUESTIONS.forEach((p,i)=>{
+    const q=document.createElement("div");q.className="puzzle";q.innerHTML=`<div class="sectiontag">MEMORY CHECK 0${i+1}</div><div class="question">${p.q}</div>`;
+    const a=answerRow(q,"Recall the missing item…",(v,f,input,btn)=>{
+      if([p.a,...(p.alt||[])].map(normalise).includes(normalise(v))){solved.add(i);correctFeedback(f);input.disabled=true;btn.disabled=true;if(solved.size===MEMORY_QUESTIONS.length)completeFolder(2);}else wrongFeedback(f);
+    });addHint(q,"mem"+i,p.hint);container.appendChild(q);
+  });
+}
+function renderChatMission(body){
+  const chat=document.createElement("div");chat.className="chat";
+  CHAT_PUZZLES.forEach((p,i)=>{
+    const b=document.createElement("div");b.className="bubble";b.innerHTML=`<span class="sender">UNKNOWN_USER // ${String(i+1).padStart(2,"0")}</span>${p.message}`;chat.appendChild(b);
+    const card=document.createElement("div");card.className="puzzle";card.innerHTML=`<div class="sectiontag">INCOMING MESSAGE ${i+1}</div>`;
+    const a=answerRow(card,"Reply to unknown user…",(v,f,input,btn)=>{
+      if(normalise(v)===normalise(p.a)){correctFeedback(f);input.disabled=true;btn.disabled=true;const reply=document.createElement("div");reply.className="bubble you";reply.innerHTML=`<span class="sender">YOU</span>${v.toUpperCase()} — transmission accepted.`;chat.appendChild(reply);if(!chat.querySelectorAll(".answer-input:not(:disabled)").length)completeFolder(3);}else wrongFeedback(f);
+    });addHint(card,"chat"+i,p.hint);chat.appendChild(card);
+  });
+  body.appendChild(chat);
+}
+function renderFinalMission(body){
+  const card=document.createElement("div");card.className="puzzle";
+  const frag=CONFIG.folders.map((f,i)=>`<span class="fragment">${f.fragment}</span>`).join("");
+  card.innerHTML=`<div class="sectiontag">FINAL ENCRYPTION // FIVE FRAGMENTS</div><h3>Rebuild the missing file.</h3><p class="muted">You recovered five fragments. Arrange them in folder order, remove the spaces, and enter the resulting password.</p><div style="margin:18px 0">${frag}</div><p class="note">FORMAT: FRAGMENT 01 + 02 + 03 + 04 + 05 (NO SPACES)</p>`;
+  const a=answerRow(card,"Enter final recovery password…",(v,f,input,btn)=>{
+    if(normalise(v).replace(/\s/g,"")===normalise(CONFIG.finalPassword).replace(/\s/g,"")){correctFeedback(f);input.disabled=true;btn.disabled=true;completeFolder(4);}else wrongFeedback(f);
+  });
+  addHint(card,"final","Read the five green fragments from left to right, in folder order. Join them together without spaces.");body.appendChild(card);
+}
+function finishGame(){
+  game.won=true;game.finishedAt=Date.now();save();
+  document.getElementById("finalTeam").textContent=game.team;
+  document.getElementById("finalScore").textContent=game.points+" POINTS";
+  document.getElementById("finalTime").textContent=timeString(elapsedSeconds());
+  showScreen("victory");launchConfetti();
+}
+function launchConfetti(){
+  const area=document.getElementById("confetti");area.innerHTML="";
+  for(let i=0;i<85;i++){const p=document.createElement("i");p.style.left=Math.random()*100+"%";p.style.animationDelay=Math.random()*1.7+"s";p.style.background=["#54e7f2","#b9f36b","#658cff","#f47cc8"][i%4];area.appendChild(p);}
+  setTimeout(()=>area.innerHTML="",5000);
+}
+function organiserReset(){
+  if(!confirm("Reset this browser's team and all progress? This cannot be undone."))return;
+  localStorage.removeItem(STORAGE_KEY);game=null;if(clockInterval)clearInterval(clockInterval);showScreen("landing");
+}
+function resumeIfSaved(){
+  const saved=load();
+  if(saved&&saved.team){game=saved;startTimer();if(game.won){document.getElementById("finalTeam").textContent=game.team;document.getElementById("finalScore").textContent=game.points+" POINTS";document.getElementById("finalTime").textContent=timeString(elapsedSeconds());showScreen("victory");}else showScreen("dashboard");}
+}
+document.title=CONFIG.eventName;initClock();resumeIfSaved();
+</script>
+</body>
+</html>
